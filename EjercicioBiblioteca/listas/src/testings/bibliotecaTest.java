@@ -55,8 +55,7 @@ public class bibliotecaTest {
         biblioteca.agregarLibro("Crepusculo", "Mayer", Genero.NOVELA, 769);
         biblioteca.agregarLibro("Las maravillas", "Juan Domingo", Genero.HISTORIA, 500);
 
-        Libro esperado = biblioteca.getLibros().get(1);
-
+        Libro esperado = new Libro("Crepusculo", "Mayer", Genero.NOVELA, 769);
         assertEquals(esperado, biblioteca.libroConMasPaginas());
 
     }
