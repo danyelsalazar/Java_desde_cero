@@ -1,6 +1,6 @@
 package bliblioteca;
 
-public class Libro {
+public class Libro implements Comparable<Libro> {
 
     private String titulo;
     private String autor;
@@ -69,6 +69,20 @@ public class Libro {
         if (cantPaginas != other.cantPaginas)
             return false;
         return true;
+    }
+
+    public int compareTo(Libro otro) {
+        if (this.genero.compareTo(otro.genero) == 0) {
+            return this.autor.compareTo(otro.autor);
+        } else {
+            return this.genero.compareTo(otro.genero);
+        }
+
+    }
+
+    public String toString() {
+        return "Titulo: " + this.titulo + "\nAutor: " + this.autor + "\nCantidad de paginas: " + this.cantPaginas
+                + "\n";
     }
 
 }

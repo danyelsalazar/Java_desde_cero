@@ -2,6 +2,9 @@ package testings;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.LinkedList;
+import java.util.List;
+
 import org.junit.Test;
 
 import bliblioteca.Biblioteca;
@@ -57,6 +60,35 @@ public class bibliotecaTest {
 
         Libro esperado = new Libro("Crepusculo", "Mayer", Genero.NOVELA, 769);
         assertEquals(esperado, biblioteca.libroConMasPaginas());
+
+    }
+
+    @Test
+    public void cantidadLibrosAutorTest() {
+        Biblioteca biblioteca = new Biblioteca();
+
+        biblioteca.agregarLibro("Blanca nieves", "Disney", Genero.AVENTURA, 120);
+        biblioteca.agregarLibro("Crepusculo", "Mayer", Genero.NOVELA, 769);
+        biblioteca.agregarLibro("Las maravillas", "Juan Domingo", Genero.HISTORIA, 500);
+        biblioteca.agregarLibro("Crepusculo - Nueva Luna", "Mayer", Genero.NOVELA, 589);
+
+        assertEquals(2, biblioteca.cantLibrosPorAutor("Mayer"));
+    }
+
+    @Test
+    public void listaLibrosAutorTest() {
+        Biblioteca biblioteca = new Biblioteca();
+
+        biblioteca.agregarLibro("Blanca nieves", "Disney", Genero.AVENTURA, 120);
+        biblioteca.agregarLibro("Crepusculo", "Mayer", Genero.NOVELA, 769);
+        biblioteca.agregarLibro("Las maravillas", "Juan Domingo", Genero.HISTORIA, 500);
+        biblioteca.agregarLibro("Crepusculo - Nueva Luna", "Mayer", Genero.NOVELA, 589);
+
+        List<Libro> librosEsperados = new LinkedList<>();
+        librosEsperados.add(new Libro("Crepusculo", "Mayer", Genero.NOVELA, 769));
+        librosEsperados.add(new Libro("Crepusculo - Nueva Luna", "Mayer", Genero.NOVELA, 589));
+
+        assertEquals(librosEsperados, biblioteca.listaLibrosAutor("Mayer"));
 
     }
 
