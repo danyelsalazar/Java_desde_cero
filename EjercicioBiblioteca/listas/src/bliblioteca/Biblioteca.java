@@ -153,7 +153,9 @@ public class Biblioteca {
     }
 
     /*
-     * recorremos un mapa y lo mostramos en un string bien organizado
+     * recorremos un mapa y lo mostramos en un string bien organizado por genero
+     * litaraio
+     * usamos treeMap para que se ordene
      */
     public String mostrarlibrosPorGeneroLiterario(Map<Genero, List<Libro>> m) {
 
@@ -162,16 +164,19 @@ public class Biblioteca {
 
         for (Map.Entry<Genero, List<Libro>> cadaFila : m.entrySet()) {
 
-            Genero genero = cadaFila.getKey();
-            s += genero;
+            Genero genero = cadaFila.getKey();// guardamos la clave
+            s += genero; // agregamos la clave al string
             s += "\n";
-            lista = cadaFila.getValue();
+            lista = cadaFila.getValue(); // igualamos la lista a la lista del mapa que estamos iterndo
 
+            // recorremos la lista que acabamos de crear y le agregamos al string el
+            // toString del libro
             for (Libro libro : lista) {
                 s += libro.toString() + "\n";
             }
 
         }
+        // retornamos el string del mensaje ya armado
         return s;
     }
 }
